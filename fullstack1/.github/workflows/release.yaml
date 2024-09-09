@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  fullstack1-contracts-validate:
+    name: Run fullstack1-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/fullstack1-contracts-ci.yaml
+
+  fullstack1-contracts-release:
+    name: Run fullstack1-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/fullstack1-contracts-cd.yaml
+    needs: fullstack1-contracts-validate
+
+  fullstack1-frontend-validate:
+    name: Run fullstack1-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/fullstack1-frontend-ci.yaml
+
+  fullstack1-frontend-release:
+    name: Run fullstack1-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/fullstack1-frontend-cd.yaml
+    needs: fullstack1-frontend-validate

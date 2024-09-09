@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2.0.11
+_src_path: gh:algorandfoundation/algokit-fullstack-template
+author_email: dikikarim2010@gmail.com
+author_name: Diki Karim
+cloud_provider: none
+contract_name: FullStack
+preset_name: production
+project_name: fullstack1
+
